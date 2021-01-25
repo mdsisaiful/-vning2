@@ -48,6 +48,8 @@ namespace Övning2
         {
             do
             {
+
+                /*
                 Console.WriteLine("\nPlease write sentence (atleast three words) or " +
                     "press \"q\" for returning to the MainMenu: ");
                 
@@ -59,6 +61,39 @@ namespace Övning2
                 if (trimText.Equals("q")) break;
                 string thirdString = subs[2];
                 Console.WriteLine($"\n Thrid string: {thirdString}");
+                */
+
+                Console.WriteLine("\nPlease write sentence (atleast three words) or " +
+                "press \"q\" for returning to the MainMenu: ");
+
+                string textInput = Console.ReadLine();
+                if (textInput.Equals("q")) break;
+
+                try
+                {
+
+                    if (textInput.Length > 3)
+                    {
+
+                        string trimText = Regex.Replace(textInput, @"\s+", " ");    // Extra uppgifter
+
+                        //Console.WriteLine(trimText);
+
+                        string[] subs = trimText.Split(' ', '\t');
+
+                        //string thirdString = subs[2];
+                        //Console.WriteLine($"\n Thrid string: {thirdString}");
+                        Console.WriteLine($"\n Thrid string: {subs[2]}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please write atleast three words!");
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
             } while (true);
         }
